@@ -2,3 +2,7 @@
   padding: 5px;
   font-size: 1.2em;
 }
+
+.actions > .btn ~ .btn {
+  margin-right: 10px;
+}

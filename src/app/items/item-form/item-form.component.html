@@ -1,0 +1,9 @@
+<form [formGroup]="itemForm">
+  <div class="form-group">
+    <label for="itemName">Name</label>
+    <input type="text" class="form-control" [formControl]="name" id="itemName" aria-describedby="nameHelp" placeholder="Enter an item name">
+    <small id="nameHelp" class="form-text text-muted">Give this item a good name.</small>
+  </div>
+
+  <button class="btn btn-primary" type="button" (click)="onDoneClicked()">Done</button>
+</form>

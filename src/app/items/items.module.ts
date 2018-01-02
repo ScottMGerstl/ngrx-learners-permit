@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -9,14 +10,19 @@ import { ItemsService } from './services/items.service';
 
 import { itemReducer } from './item.reducer';
 import { ItemEffects } from './item.effects';
+import { ItemFormComponent } from './item-form/item-form.component';
+import { AddItemComponent } from './add-item/add-item.component';
 
 @NgModule({
   declarations: [
     ItemListComponent,
-    ItemComponent
+    ItemComponent,
+    ItemFormComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     EffectsModule.forFeature([ItemEffects]),
     StoreModule.forFeature('items', itemReducer),
   ],
