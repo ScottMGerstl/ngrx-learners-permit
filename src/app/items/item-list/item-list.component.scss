@@ -1,0 +1,11 @@
+.header {
+  font-size: 1.5em;
+
+  .actions {
+    text-align: center;
+
+    @media(max-width: 768px) {
+      text-align: left;
+    }
+  }
+}

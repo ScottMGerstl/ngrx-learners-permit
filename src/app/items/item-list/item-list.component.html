@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row header">
+    <div class="col-md-2 id">
+      <div>ID</div>
+    </div>
+    <div class="col-md-6 name">
+      <div>Name</div>
+    </div>
+    <div class="col-md-4 actions">
+      <div>Actions</div>
+    </div>
+  </div>
+  <div app-item *ngFor="let item of items$ | async" [item]="item" (itemClicked)="onItemClicked($event)"></div>
+</div>
