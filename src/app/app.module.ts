@@ -5,28 +5,19 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
-
-import { ItemListComponent } from './items/item-list/item-list.component';
-import { itemReducer } from './items/item.reducer';
-import { ItemEffects } from './items/item.effects';
-import { ItemsService } from './items/services/items.service';
-import { ItemComponent } from './items/item/item.component';
+import { ItemModule } from './items/items.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ItemListComponent,
-    ItemComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    EffectsModule.forRoot([ItemEffects]),
-    StoreModule.forRoot({items: itemReducer}),
+    ItemModule,
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument()
-  ],
-  providers: [
-    ItemsService
   ],
   bootstrap: [AppComponent]
 })
