@@ -10,9 +10,9 @@ import { Item } from '../types/item';
 })
 export class ItemFormComponent implements OnInit {
 
-  @Input() data: Item;
+  @Input() editItem: Item;
 
-  @Output() doneClicked: EventEmitter<null> = new EventEmitter<null>();
+  @Output() doneClicked: EventEmitter<ItemFormData> = new EventEmitter<ItemFormData>();
 
   private itemForm: FormGroup;
   private formData: ItemFormData;
@@ -22,13 +22,22 @@ export class ItemFormComponent implements OnInit {
   public ngOnInit(): void {
     this.setupForm();
 
-    if (this.data) {
-      this.itemForm.patchValue({ name: this.data.name });
+    if (this.editItem) {
+      this.itemForm.patchValue({ name: this.editItem.name });
     }
   }
 
   private onDoneClicked(): void {
-    this.doneClicked.emit();
+
+    const formResult: ItemFormData = {
+      name: this.itemForm.get('name').value
+    };
+
+    if (this.editItem) {
+      formResult.id = this.editItem.id;
+    }
+
+    this.doneClicked.emit(formResult);
   }
 
   public clearForm(): void {
