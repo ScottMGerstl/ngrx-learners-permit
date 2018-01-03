@@ -19,7 +19,7 @@ import { ItemFormData } from '../types/item-form-data';
 import {
   LOAD_ITEMS, LoadItemsSuccessAction, LoadItemsFailureAction,
   DELETE_ITEM, DeleteItemSuccessAction, DeleteItemFailureAction,
-  EDIT_ITEM, EditItemSuccessAction, EditItemFailureAction, CREATE_ITEM, CreateItemSuccessAction, CreateItemFailureAction, FIND_ITEM
+  EDIT_ITEM, EditItemSuccessAction, EditItemFailureAction, CREATE_ITEM, CreateItemSuccessAction, CreateItemFailureAction
 } from './item.actions';
 
 @Injectable()
