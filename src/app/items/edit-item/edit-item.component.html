@@ -1,2 +1,2 @@
 <h3>Edit Item #{{item.id}}</h3>
-<app-item-form [editItem]="item" (doneClicked)="onDoneClicked($event)"></app-item-form>
+<app-item-form [editItem]="item" (doneClicked)="onDoneClicked($event)" (cancelClicked)="onCancelClicked()"></app-item-form>

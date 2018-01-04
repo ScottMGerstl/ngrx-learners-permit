@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Item } from '../types/item';
 import { Observable } from 'rxjs/Observable';
+import { Item } from '../types/item';
 import { ItemFormData } from '../types/item-form-data';
 
 @Injectable()
@@ -32,9 +32,9 @@ export class ItemsService {
       name: data.name
     };
 
-    this.data.push(createdItem);
+    const newData = Object.assign([], this.data, createdItem);
 
-    return Observable.create((observer) => { observer.next(createdItem); });
+    return Observable.create((observer) => { observer.next(newData); });
   }
 
   /**

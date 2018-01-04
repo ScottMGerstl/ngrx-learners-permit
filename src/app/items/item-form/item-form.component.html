@@ -1,14 +1,11 @@
-<form [formGroup]="itemForm">
+<form [formGroup]="itemForm" (keyup.enter)="onDoneClicked()" (keyup.esc)="onCancelClicked()">
   <div class="form-group">
-    <label for="itemName">Name</label>
-    <input type="text" class="form-control" formControlName="name" id="itemName" aria-describedby="nameHelp" placeholder="Enter an item name">
-    <small id="nameHelp" class="form-text"
-            [ngClass]="{
-             'text-danger': itemForm.controls.name.invalid && itemForm.controls.name.touched,
-             'text-muted': itemForm.controls.name.valid || itemForm.controls.name.touched === false
-            }"
-            [innerText]="itemForm.controls.name.invalid && itemForm.controls.name.touched ? 'Name is invalid' : 'Give this item a good name'"></small>
+    <label id="item-name-label" for="item-name">Name</label>
+    <input type="text" class="form-control" formControlName="name" id="item-name" aria-describedby="item-name-messages" aria-labelledby="item-name-label" placeholder="Enter an item name" autofocus>
+
+    <div id="item-name-messages" app-field-messages [control]="itemForm?.get('name')" [validationMessages]="formMessages.name" description="Give this item a good name"></div>
   </div>
 
   <button class="btn btn-primary" type="button" (click)="onDoneClicked()">Done</button>
+  <button class="btn btn-secondary" type="button" (click)="onCancelClicked()">Cancel</button>
 </form>

@@ -1,0 +1,6 @@
+<small *ngIf="isFieldValid() !== false" class="form-text text-muted">{{description}}</small>
+<ng-container *ngIf="isFieldValid() === false">
+  <ng-container *ngFor="let message of validationErrorLibrary">
+    <small *ngIf="containsErrorKey(message)" class="form-text text-danger">{{message.text}}</small>
+  </ng-container>
+</ng-container>

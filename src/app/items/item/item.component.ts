@@ -1,17 +1,18 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Item } from '../types/item';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ListItemClickData } from '../../shared/types/list-item-click-data';
+import { Item } from '../types/item';
 
 @Component({
   selector: 'app-item, [app-item]',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+  styleUrls: ['./item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemComponent {
 
-  @Input() item: Item;
+  @Input() public item: Item;
 
-  @Output() itemClicked: EventEmitter<ListItemClickData<Item>> = new EventEmitter<ListItemClickData<Item>>();
+  @Output() public itemClicked: EventEmitter<ListItemClickData<Item>> = new EventEmitter<ListItemClickData<Item>>();
 
   constructor() { }
 
