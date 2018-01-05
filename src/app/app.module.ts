@@ -9,6 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app.component';
 import { ItemsModule } from './items/items.module';
 import { AddButtonComponent } from './shared/components/add-button/add-button.component';
+import { NavigationEffects } from './state-management/navigation.effects';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'items' },
@@ -23,10 +24,10 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     ItemsModule,
-    EffectsModule.forRoot([]),
-    StoreModule.forRoot({ routerReducer: routerReducer }),
+    EffectsModule.forRoot([NavigationEffects]),
+    StoreModule.forRoot({  }), // routerReducer: routerReducer
     StoreDevtoolsModule.instrument(),
-    StoreRouterConnectingModule
+    // StoreRouterConnectingModule
   ],
   bootstrap: [AppComponent]
 })
