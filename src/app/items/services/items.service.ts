@@ -28,7 +28,7 @@ export class ItemsService {
   public createItem(data: ItemFormData): Observable<Item> {
 
     const createdItem: Item = {
-      id: this.data[this.data.length - 1].id + 1,
+      id: (this.data[this.data.length - 1] || { id: 0 }).id + 1,
       name: data.name
     };
 

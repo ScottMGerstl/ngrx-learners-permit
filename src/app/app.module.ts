@@ -26,9 +26,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ItemsModule,
     EffectsModule.forRoot([NavigationEffects]),
-    StoreModule.forRoot({ routerReducer: routerReducer }),
+    StoreModule.forRoot({}), // routerReducer: routerReducer
     StoreDevtoolsModule.instrument(),
-    StoreRouterConnectingModule
+    // StoreRouterConnectingModule
   ],
   bootstrap: [AppComponent]
 })

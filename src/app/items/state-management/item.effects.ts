@@ -28,7 +28,13 @@ export class ItemEffects {
 
   constructor(private itemsService: ItemsService, private actions$: Actions, private router: Router) { }
 
-  @Effect() public loadItems$: Observable<BaseAction<Item[]>> = this.actions$
+  /**
+   * Retrieves items to be loaded into the store
+   *
+   * @type {Observable<BaseAction<Item[]>>}
+   * @memberof ItemEffects
+   */
+  @Effect() public loadItems$: Observable<Action> = this.actions$
     .ofType(LOAD_ITEMS)
     .switchMap((action: BaseAction<Item[]>) =>
       this.itemsService.getItems()
@@ -47,6 +53,7 @@ export class ItemEffects {
         this.itemsService.createItem(action.payload)
           .mergeMap((data: Item) => [new CreateItemSuccessAction(data), new RedirectAction('/items')])
           .catch(() => of(new CreateItemFailureAction(action.payload))));
+
 
   /**
    * Deletes an item
