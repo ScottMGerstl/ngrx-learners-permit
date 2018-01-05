@@ -1,4 +1,6 @@
-export abstract class BaseAction<T> {
+import { Action } from '@ngrx/store';
+
+export abstract class BaseAction<T> implements Action {
   public readonly type: string;
   public payload?: T;
 

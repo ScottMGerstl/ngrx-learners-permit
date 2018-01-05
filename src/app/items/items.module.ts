@@ -10,6 +10,7 @@ import { ItemComponent } from './item/item.component';
 import { ItemsService } from './services/items.service';
 
 import { SharedModule } from '../shared/shared.module';
+import { NavigationEffects } from '../state-management/navigation.effects';
 import { AddItemComponent } from './add-item/add-item.component';
 import { EditItemComponent } from './edit-item/edit-item.component';
 import { ItemFormComponent } from './item-form/item-form.component';
