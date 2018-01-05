@@ -10,6 +10,7 @@ import { ItemFormData } from '../types/item-form-data';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
+import { RedirectAction } from '../../state-management/navigation.actions';
 
 @Component({
   selector: 'app-edit-item',
@@ -35,10 +36,10 @@ export class EditItemComponent implements OnInit {
     this.store.dispatch(new EditItemAction({
       id: data.id,
       name: data.name
-    }));
+    }, { successActions: [new RedirectAction('/items')]}));
   }
 
   private onCancelClicked(): void {
-    this.router.navigate(['/items']);
+    this.store.dispatch(new RedirectAction('/items'));
   }
 }

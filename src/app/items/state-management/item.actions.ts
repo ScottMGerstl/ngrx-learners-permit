@@ -1,4 +1,4 @@
-import { BaseAction } from '../../shared/state-management/actions/base.action';
+import { AdditionalActions, BaseAction, BaseActionWithActions } from '../../shared/state-management/actions/base.action';
 import { Item } from '../types/item';
 import { ItemFormData } from '../types/item-form-data';
 
@@ -38,9 +38,9 @@ export class LoadItemsFailureAction extends BaseAction<Item[]> {
 }
 
 // Create
-export class CreateItemAction extends BaseAction<ItemFormData> {
-  constructor(payload: ItemFormData) {
-    super(CREATE_ITEM, payload);
+export class CreateItemAction extends BaseActionWithActions<ItemFormData> {
+  constructor(payload: ItemFormData, additionalActions?: AdditionalActions) {
+    super(CREATE_ITEM, payload, additionalActions);
   }
 }
 
@@ -76,9 +76,9 @@ export class DeleteItemFailureAction extends BaseAction<Item> {
 }
 
 // Edit
-export class EditItemAction extends BaseAction<Item> {
-  constructor(payload: Item) {
-    super(EDIT_ITEM, payload);
+export class EditItemAction extends BaseActionWithActions<Item> {
+  constructor(payload: Item, additionalActions?: AdditionalActions) {
+    super(EDIT_ITEM, payload, additionalActions);
   }
 }
 
