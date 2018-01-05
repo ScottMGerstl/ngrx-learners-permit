@@ -28,13 +28,13 @@ export class ItemsService {
   public createItem(data: ItemFormData): Observable<Item> {
 
     const createdItem: Item = {
-      id: this.data[this.data.length - 1].id + 1,
+      id: (this.data[this.data.length - 1] || { id: 0 }).id + 1,
       name: data.name
     };
 
-    const newData = Object.assign([], this.data, createdItem);
+    this.data = [ ...this.data, createdItem ];
 
-    return Observable.create((observer) => { observer.next(newData); });
+    return Observable.create((observer) => { observer.next(createdItem); });
   }
 
   /**
