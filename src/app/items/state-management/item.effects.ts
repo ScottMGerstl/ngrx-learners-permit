@@ -45,7 +45,7 @@ export class ItemEffects {
     .ofType(CREATE_ITEM)
     .switchMap((action: BaseAction<ItemFormData>) =>
         this.itemsService.createItem(action.payload)
-          .mergeMap((data: Item) => [new EditItemSuccessAction(data), new RedirectAction('/items')])
+          .mergeMap((data: Item) => [new CreateItemSuccessAction(data), new RedirectAction('/items')])
           .catch(() => of(new CreateItemFailureAction(action.payload))));
 
   /**
@@ -59,7 +59,7 @@ export class ItemEffects {
     .switchMap((action: BaseAction<Item>) =>
       this.itemsService.deleteItem(action.payload)
         .map((data: Item) => new DeleteItemSuccessAction(data))
-        .catch(() => of(new DeleteItemFailureAction(action.payload)));
+        .catch(() => of(new DeleteItemFailureAction(action.payload))));
 
   /**
    * Edits an item and navigates back to the main page
@@ -72,6 +72,5 @@ export class ItemEffects {
     .switchMap((action: BaseAction<Item>) =>
       this.itemsService.editItem(action.payload)
         .mergeMap((data: Item) => [new EditItemSuccessAction(data), new RedirectAction('/items')])
-        // .do(() => new RedirectAction('/items'))
         .catch(() => of(new EditItemFailureAction(action.payload))));
 }
